@@ -1,0 +1,1087 @@
+<!doctype html>
+<html lang="hu">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Nándorfi Vince – CV</title>
+  <style>
+    :root{
+      /* Printer-friendly, slightly different palette */
+      --bg: #f7f8fa;
+      --paper: #ffffff;
+      --text: #111827;
+      --muted: #4b5563;
+      --line: #e5e7eb;
+      --accent: #0f766e;      /* teal */
+      --accent-2:#0b5560;     /* darker teal */
+      --chip: #f3f4f6;
+
+      --radius: 14px;
+      --shadow: 0 10px 30px rgba(17,24,39,0.08);
+      --maxw: 980px;
+    }
+
+    *{ box-sizing: border-box; }
+    html,body{ height: 100%; }
+    body{
+      margin:0;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, "Noto Sans", "Liberation Sans", sans-serif;
+      color: var(--text);
+      background: radial-gradient(1200px 600px at 10% 0%, rgba(15,118,110,0.10), transparent 60%),
+                  radial-gradient(1200px 600px at 90% 0%, rgba(15,118,110,0.06), transparent 55%),
+                  var(--bg);
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    /* Top bar */
+    .topbar{
+      position: sticky;
+      top:0;
+      z-index: 20;
+      background: rgba(255,255,255,0.85);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--line);
+    }
+    .topbar-inner{
+      max-width: var(--maxw);
+      margin: 0 auto;
+      padding: 12px 16px;
+      display:flex;
+      align-items:center;
+      justify-content: space-between;
+      gap: 12px;
+    }
+    .brand{
+      display:flex;
+      align-items:center;
+      gap: 10px;
+      min-width: 220px;
+    }
+    .brand .dot{
+      width: 10px; height: 10px; border-radius: 999px;
+      background: var(--accent);
+      box-shadow: 0 0 0 4px rgba(15,118,110,0.12);
+      flex: 0 0 auto;
+    }
+    .brand .title{ line-height: 1.1; }
+    .brand .title strong{ display:block; font-size: 14px; }
+    .brand .title span{ display:block; font-size: 12px; color: var(--muted); }
+
+    .controls{
+      display:flex;
+      align-items:center;
+      gap: 10px;
+      flex-wrap: wrap;
+      justify-content:flex-end;
+    }
+    .segmented{
+      display:inline-flex;
+      border: 1px solid var(--line);
+      background: #fff;
+      border-radius: 10px;
+      overflow:hidden;
+    }
+    .segmented button{
+      border:0;
+      background: transparent;
+      padding: 8px 10px;
+      font-size: 13px;
+      cursor:pointer;
+      color: var(--muted);
+      min-width: 48px;
+    }
+    .segmented button.active{
+      background: var(--accent);
+      color:#fff;
+    }
+    .btn{
+      border: 1px solid var(--line);
+      background: #fff;
+      color: var(--text);
+      padding: 8px 10px;
+      font-size: 13px;
+      border-radius: 10px;
+      cursor:pointer;
+      display:inline-flex;
+      align-items:center;
+      gap: 8px;
+      box-shadow: 0 1px 0 rgba(17,24,39,0.02);
+    }
+    .btn.primary{
+      border-color: rgba(15,118,110,0.35);
+      background: rgba(15,118,110,0.10);
+      color: var(--accent-2);
+    }
+    .btn:hover{ filter: brightness(0.985); }
+
+    /* Layout */
+    .wrap{
+      max-width: var(--maxw);
+      margin: 18px auto 42px;
+      padding: 0 16px;
+    }
+    .card{
+      background: var(--paper);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      overflow:hidden;
+    }
+
+    /* Header (horizontal layout) */
+    .hero{
+      padding: 22px;
+      display:flex;
+      align-items:flex-start;
+      justify-content: space-between;
+      gap: 18px;
+      border-bottom: 1px solid var(--line);
+      background:
+        linear-gradient(180deg, rgba(15,118,110,0.08), transparent 42%),
+        #fff;
+    }
+    .hero-left{
+      display:flex;
+      align-items:center;
+      gap: 14px;
+      min-width: 0;
+    }
+    .avatar{
+      width: 64px;
+      height: 64px;
+      border-radius: 16px;
+      border: 1px solid var(--line);
+      background: linear-gradient(135deg, rgba(15,118,110,0.14), rgba(15,118,110,0.04));
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      color: var(--accent-2);
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      flex: 0 0 auto;
+    }
+    .hero h1{
+      margin:0;
+      font-size: 22px;
+      letter-spacing: -0.3px;
+      line-height: 1.15;
+    }
+    .role{
+      margin-top: 6px;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.35;
+    }
+
+    /* Make role bold in both places (topbar + hero) */
+    #hdrRole,
+    #role{
+      font-weight: 700;
+    }
+
+    .hero-right{
+      text-align: right;
+      min-width: 260px;
+    }
+    .contact{
+      font-size: 12.5px;
+      color: var(--text);
+      line-height: 1.6;
+    }
+    .contact .muted{ color: var(--muted); }
+    .contact a{
+      color: inherit;
+      text-decoration: none;
+      border-bottom: 1px dotted rgba(15,118,110,0.45);
+    }
+    .contact a:hover{ border-bottom-style: solid; }
+    @media (max-width: 820px){
+      .hero{ flex-direction: column; }
+      .hero-right{ text-align: left; min-width: 0; }
+    }
+
+    /* Sections (horizontal, stacked) */
+    .section{
+      padding: 18px 22px;
+      border-bottom: 1px solid var(--line);
+      background: #fff;
+    }
+    .section:last-child{ border-bottom: 0; }
+    .kicker{
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--accent-2);
+      margin: 0 0 10px 0;
+    }
+    .para{
+      margin: 0 0 10px 0;
+      font-size: 13px;
+      color: var(--text);
+      line-height: 1.7;
+    }
+    .muted{ color: var(--muted); }
+
+    .grid2{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+      align-items: start;
+    }
+    @media (max-width: 820px){
+      .grid2{ grid-template-columns: 1fr; }
+    }
+
+    .panel{
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      background: linear-gradient(180deg, rgba(15,118,110,0.06), transparent 40%), #fff;
+      padding: 12px 12px;
+    }
+
+    .chips{
+      display:flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .chip{
+      font-size: 12px;
+      padding: 6px 8px;
+      border-radius: 999px;
+      background: var(--chip);
+      border: 1px solid var(--line);
+      color: #111827;
+      line-height: 1;
+      white-space: nowrap;
+    }
+
+    .list{
+      margin: 0;
+      padding-left: 16px;
+    }
+    .list li{ margin: 6px 0; font-size: 12.5px; line-height: 1.5; color: var(--text); }
+
+    .project{
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      padding: 12px 12px;
+      background: #fff;
+      margin: 10px 0;
+    }
+    .project .top{
+      display:flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+    .project .name{ font-weight: 700; font-size: 13px; }
+    .project .subtitle{ font-weight: 500; color: var(--muted); font-size: 12px; margin-left: 6px; }
+    .project .desc{
+      margin: 8px 0 10px 0;
+      font-size: 13px;
+      color: var(--text);
+      line-height: 1.65;
+    }
+
+    /*A-B*/
+    .project-variants{
+      margin-top: 4px;
+      font-size: 11.5px;
+      color: var(--muted);
+    }
+
+    .project-variants a{
+      color: var(--accent-2);
+      text-decoration: none;
+      border-bottom: 1px dotted rgba(15,118,110,0.45);
+    }
+
+    .project-variants a:hover{
+      border-bottom-style: solid;
+    }
+
+    .timeline{
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      overflow:hidden;
+      background:#fff;
+    }
+    .row{
+      display:grid;
+      grid-template-columns: 160px 1fr 1fr;
+      gap: 10px;
+      padding: 10px 12px;
+      border-top: 1px solid var(--line);
+      font-size: 12.5px;
+      line-height: 1.35;
+    }
+    .row:first-child{ border-top: 0; }
+    .row .period{ font-weight: 700; color: #111827; }
+    .row .company{ color: #111827; }
+    .row .title{ color: var(--muted); }
+    @media (max-width: 720px){
+      .row{ grid-template-columns: 1fr; }
+      .row .period{ margin-bottom: 2px; }
+    }
+
+    .footnote{
+      padding: 14px 22px 20px;
+      font-size: 11px;
+      color: var(--muted);
+      background: #fff;
+      border-top: 1px solid var(--line);
+    }
+
+    /* Print (PDF via browser print) */
+    @page{
+      size: A4;
+      margin: 12mm;
+    }
+    @media print{
+      body{ background: #fff !important; }
+      .topbar, .no-print{ display:none !important; }
+      .wrap{ max-width: none; margin: 0; padding: 0; }
+      .card{ box-shadow: none !important; border: 0 !important; border-radius: 0 !important; }
+      .hero{ border-bottom: 1px solid #d1d5db !important; }
+      .section{ border-bottom: 1px solid #d1d5db !important; }
+      .chip{ background: #f3f4f6 !important; }
+      a{ color: inherit !important; text-decoration: none !important; }
+    }
+  </style>
+</head>
+<body>
+  <header class="topbar no-print">
+    <div class="topbar-inner">
+      <div class="brand" aria-label="Header">
+        <span class="dot" aria-hidden="true"></span>
+        <div class="title">
+          <strong id="hdrName">Nándorfi Vince</strong>
+          <span id="hdrRole">Senior Teszt Automatizáló</span>
+        </div>
+      </div>
+
+      <div class="controls">
+        <div class="segmented" role="tablist" aria-label="Language">
+          <button id="btnHU" class="active" type="button" role="tab" aria-selected="true">HU</button>
+          <button id="btnEN" type="button" role="tab" aria-selected="false">EN</button>
+        </div>
+
+        <button id="btnPrint" class="btn primary" type="button" title="PDF letöltése (nyomtatás)">
+          PDF / Print
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <div class="card">
+      <!-- HERO (horizontal) -->
+      <section class="hero">
+        <div class="hero-left">
+          <div class="avatar" aria-label="Profile initials"><span id="avatarFallback">NV</span></div>
+          <div style="min-width:0;">
+            <h1 id="name">Nándorfi Vince</h1>
+            <div class="role" id="role">Senior Teszt Automatizáló</div>
+          </div>
+        </div>
+        <div class="hero-right">
+          <div class="contact" id="contact"></div>
+        </div>
+      </section>
+
+      <!-- PROFILE -->
+      <section class="section">
+        <p class="kicker" id="profileKicker">Professzionális profil</p>
+        <div id="profile"></div>
+      </section>
+
+      <!-- SKILLS (two columns) -->
+      <section class="section">
+        <p class="kicker" id="skillsKicker">Technológiai eszköztár</p>
+        <div class="grid2" id="skillsGrid"></div>
+      </section>
+
+      <!-- PROJECTS -->
+      <section class="section">
+        <p class="kicker" id="projectsKicker">Portfólió projektek - HAMAROSAN</p>
+        <div id="projects"></div>
+        <p class="para muted" style="margin-top:10px;">
+          <span id="projectsAllLabel">Minden projekt elérhető:</span>
+          <a id="githubLink2" href="#" target="_blank" rel="noreferrer" style="color:var(--accent-2); text-decoration:none; border-bottom:1px dotted rgba(15,118,110,0.45);"></a>
+        </p>
+      </section>
+
+      <!-- TRAININGS + EDUCATION (two columns, horizontal) -->
+      <section class="section">
+        <p class="kicker" id="learnKicker">Képzések & végzettség</p>
+        <div class="grid2">
+          <div class="panel">
+            <p class="kicker" id="trainingsKicker" style="margin-bottom:10px;">Szakmai továbbképzések (2025–2026)</p>
+            <div id="trainings"></div>
+          </div>
+          <div class="panel">
+            <p class="kicker" id="eduKicker" style="margin-bottom:10px;">Végzettség</p>
+            <div id="education"></div>
+
+            <p class="kicker" id="langsKicker" style="margin:14px 0 10px;">Nyelvtudás</p>
+            <ul class="list" id="langs"></ul>
+
+            <p class="kicker" id="otherKicker" style="margin:14px 0 10px;">Egyéb információk</p>
+            <ul class="list" id="other"></ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- EXPERIENCE SUMMARY -->
+      <section class="section">
+        <p class="kicker" id="expKicker">Szakmai tapasztalat összefoglaló</p>
+        <div class="panel">
+          <div id="expTitle" style="font-weight:700; font-size:13px; margin-bottom:8px;"></div>
+          <ul class="list" id="expBullets"></ul>
+        </div>
+      </section>
+
+      <!-- JOBS -->
+      <section class="section">
+        <p class="kicker" id="jobsKicker">Munkahelyek (kronológia)</p>
+        <div class="timeline" id="jobs"></div>
+      </section>
+
+      <!-- VALUE -->
+      <section class="section">
+        <p class="kicker" id="valueKicker">Motivációm & hozzáadott értékem</p>
+        <div class="panel">
+          <ul class="list" id="value"></ul>
+        </div>
+      </section>
+
+      <div class="footnote" id="footnote">
+        Tipp: a “PDF / Print” gomb a böngésző nyomtatását nyitja meg. Válaszd a “Save as PDF” opciót.
+      </div>
+    </div>
+  </main>
+
+  <script>
+    /* ---------------------------
+       Data (HU + EN)
+       --------------------------- */
+    const CV = {
+      hu: {
+        lang: "hu",
+        ui: {
+          profileKicker: "Professzionális profil",
+          skillsKicker: "Technológiai eszköztár",
+          projectsKicker: "Portfólió projektek",
+          trainingsKicker: "Szakmai továbbképzések (2025–2026)",
+          eduKicker: "Végzettség",
+          langsKicker: "Nyelvtudás",
+          otherKicker: "Egyéb információk",
+          learnKicker: "Képzések & végzettség",
+          expKicker: "Szakmai tapasztalat összefoglaló",
+          jobsKicker: "Munkahelyek (kronológia)",
+          valueKicker: "Motivációm & hozzáadott értékem",
+          projectsAllLabel: "Minden projekt publikus és elérhető:",
+          footnote: "Tipp: a “PDF / Print” gomb a böngésző nyomtatását nyitja meg. Válaszd a “Save as PDF” opciót."
+        },
+        name: "Nándorfi Vince",
+        role: "Senior Teszt Automatizáló (Test Automation Architect / Tech Lead)",
+        contact: {
+          email: "nandorfivince@protonmail.com",
+          phone: "+36 20 621 9693",
+          githubLabel: "github.com/nandorfivince",
+          githubUrl: "https://github.com/nandorfivince",
+          linkedinLabel: "linkedin.com/in/nandorfivince/",
+          linkedinUrl: "https://www.linkedin.com/in/nandorfivince/",
+          cvLabel: "nandorfivince.github.io/",
+          cvUrl: "https://nandorfivince.github.io/",
+          location: "Budapest, Hungary"
+        },
+        profile: [
+          "11 év tapasztalat minőségbiztosításban és teszt automatizálásban, Test Automation Architect és Tech Lead szerepkörökben. End-to-end szemlélettel építek stabil, skálázható automatizált tesztrendszereket UI, API és adatbázis rétegen, modern CI/CD pipeline-okba integrálva, Dockeres és felhős környezetekre optimalizálva.",
+          "Komplex rendszerekhez tesztstratégiát és tesztarchitektúrát tervezek (test pyramid, shift-left, risk-based testing), és kialakítom a minőségi kapukat (quality gates) a release folyamatban. Erősségem a flakey tesztek stabilizálása, a tesztadat-kezelés és környezetmenedzsment, a riportolás/observability, valamint a performance és megbízhatósági validáció (load/stress/soak).",
+          "Vezetői oldalról mentorálok, code review kultúrát és automatizálási guideline-okat vezetek be, ownership szemlélettel. Célom a gyors, mégis kontrollált szállítás: rövidebb feedback loop, kevesebb regresszió, mérhető minőségi javulás."
+        ],
+        skillGroups: [
+          { title: "Programozási nyelvek (tesztautomatizálás)", items: ["Java","Python","JavaScript/TypeScript","Bash/Shell scripting"] },
+
+          { title: "UI / Frontend tesztautomatizálás", items: ["Playwright","Selenium WebDriver","Cypress","WebdriverIO","Page Object Model (POM)","Visual regression (pl. Percy)"] },
+
+          { title: "API / Backend tesztautomatizálás", items: ["REST Assured","Postman","Service virtualization","Contract testing","SOAP/REST validáció"] },
+
+          { title: "Java ökoszisztéma – keretrendszerek & libek", items: ["JUnit 5","TestNG","Cucumber (BDD)","Maven/Gradle","AssertJ/Hamcrest","Mockito"] },
+
+          { title: "Python ökoszisztéma – keretrendszerek & libek", items: ["Pytest","Requests","Playwright (Python)","Behave (BDD)","Allure report","virtualenv"] },
+
+          { title: "JavaScript/TS ökoszisztéma – keretrendszerek & csomagok", items: ["Playwright (JS/TS)","Cypress","Jest","Node.js","pnpm/npm/yarn","Allure/HTML riportok"] },
+
+          { title: "Tesztmenedzsment & minőségi gyakorlatok", items: ["Test Strategy & Test Plan","Test Pyramid / Shift-left","Risk-based testing","Regression & Smoke suite design","Test data management","Defect triage, RCA (root cause analysis)"] },
+
+          { title: "CI/CD, konténerek & környezetek", items: ["Jenkins","GitHub Actions / GitLab CI","Docker","Docker Compose","Kubernetes (alapszintű operáció)","Quality gates (Sonar, pipeline policy-k)"] },
+
+          { title: "Teljesítmény & megbízhatóság", items: ["JMeter","Gatling","Load/Stress/Soak tesztek","Performance baseline & trendelés","SLA/SLO szemlélet"] },
+
+          { title: "Adatbázisok & adatellenőrzés", items: ["PostgreSQL","MySQL","SQLite","SQL alapú validációk","Test fixtures & seedelés","Data consistency ellenőrzések"] },
+
+          { title: "Megfigyelhetőség, riportolás, tooling", items: ["Allure Report","ReportPortal","Log/trace alapú hibakeresés","Test metrics (pass rate, flakiness, lead time)","Jira","Xray/Zephyr (ha használt környezetben elérhető)"] }
+        ],
+        projects: [
+          {
+            name: "Storyteller Demo",
+            subtitle: "Beágyazható történetek SDK",
+            url: "https://ministories-srjq.onrender.com/",
+            tech: ["Python FastAPI","SQLite","SQLModel","TypeScript","React","Vite","VanillaJS","Playwright","Docker","pnpm","RESTAPI","E2E","Testing"],
+            desc: "Egy beágyazható, Instagram Stories-szerű Web SDK demó projekt, amely TypeScript SDK-t, React playgroundot, FastAPI backendet, SQLite adatbázist, analitika eseménykövetést, performance monitoring overlayt, Playwright E2E teszteket és Docker alapú deploymentet mutat be monorepo struktúrában."
+          },
+          {
+            name: "Modolit Demo",
+            subtitle: "Online Akadémia",
+            url: "https://modolit-demo.onrender.com/",
+            tech: ["Python","FastAPI","SQLite(PostgreSQL)","GCP(Render)","Docker","TypeScript","React","Next.js","WebSocket","WebRTC"],
+            desc: "Egy online oktatási platform, ahol a diákok kurzusokat nézhetnek (magyar whisper felirattal), Python kódolási feladatokat oldhatnak meg (automatikus ellenőrzéssel), és valós idejű WebSocket chaten kommunikálhatnak a tanárral."
+          },
+          {
+            name: "Kreatív Hobbi",
+            subtitle: "Hobbi közösségi platform",
+            url: "https://nandorfivince.github.io/nandorfivince.creativehobby.github.io/",
+            tech: ["HTML","CSS","JS","Design kísérlet"],
+            desc: "Közösségi platform hobbi csoportok szervezésére, eseménykezeléssel és webshop."
+          },
+          {
+            name: "Ilident páciens koordinátor",
+            subtitle: "Egyfázisú fogimplantátum – webes pácienskoordináció",
+            url: "https://nandorfivince.github.io/nandorfivince.ilident-design-A.github.io/",
+            variants: [
+              { label: "Design A (aktív)", url: "https://nandorfivince.github.io/nandorfivince.ilident-design-A.github.io/" },
+              { label: "Design B (alternatíva)", url: "https://nandorfivince.github.io/nandorfivince.ilident-design-B.github.io/" },
+              { label: "Eredeti oldal", url: "https://ilident.com/" }
+            ],
+            tech: [
+              "HTML",
+              "CSS",
+              "JavaScript",
+              "Később: Chatbot",
+              "Űrlap form",
+              "Notification system"
+            ],
+            desc: "Meglévő pácienskoordinátor weboldal felújítása és továbbfejlesztése. Célom egy modern, jól strukturált páciensoldal kialakítása, több design iránnyal és jövőbeli automatizált funkciókkal."
+          }
+        ],
+        trainings: [
+          {
+            title: "Python Alapok & Webtechnológiák",
+            org: "Cubix Academy",
+            meta: "14 hetes intenzív full-time képzés (280+ óra) – Vizsga minősítés: Kiváló (Maximális pontszám)",
+            bullets: [
+              "Python OOP & nyelvi elemek, adatstruktúrák, algoritmusok",
+              "web alapok (HTTP, REST API-k), adatbázis kezelés",
+              "Git verziókezelés, clean code gyakorlatok"
+            ]
+          },
+          {
+            title: "Webfejlesztés Alapjai (JavaScript/TypeScript)",
+            org: "Cubix Academy",
+            meta: "14 hetes intenzív full-time képzés (280+ óra) – Vizsga minősítés: Kiváló (Maximális pontszám)",
+            bullets: [
+              "Modern JavaScript (ES6+), TypeScript, aszinkron programozás",
+              "DOM manipuláció, HTTP kliens-szerver kommunikáció","CSS,SCSS,SASS","fejlesztői eszközök, debugging"
+            ]
+          },
+          {
+            title: "Mesterséges Intelligencia Fejlesztő",
+            org: "IT Betyár",
+            meta: "5 hetes specializált képzés – Vizsga minősítés: Kiváló (Maximális pontszám)",
+            bullets: [
+              "Machine Learning alapok, Neural Networks (ANN, CNN)",
+              "TensorFlow/Keras, adatelőkészítés, model training & evaluation",
+              "AI API integráció"
+            ]
+          },
+          {
+            title: "Django & React.js Specializáció",
+            org: "Udemy (önálló tanulás)",
+            meta: "",
+            bullets: [
+              "Django MVT architektúra, Django ORM mastery, Django REST Framework",
+              "React komponensek és hooks, state management, React Router",
+              "integrált full-stack alkalmazások építése"
+            ]
+          }
+        ],
+        exp: {
+          title: "11 év Senior Test Automation / Architect / Tech Lead tapasztalat",
+          bullets: [
+            "Teszt automatizálási architektúra tervezése és bevezetése: UI, API, DB és integrációs rétegek lefedése, skálázható framework-ekkel.",
+            "Tesztstratégia és tesztterv készítés: test pyramid, risk-based megközelítés, release minőségi kapuk (quality gates) és belépési/kilépési kritériumok.",
+            "CI/CD integráció: pipeline-okba épített automata regressziók, párhuzamos futtatás, stabil riportolás, trendek és minőségi metrikák.",
+            "Cross-functional együttműködés: fejlesztőkkel, PO-val és Ops-szal közös hibatranzakciók, RCA, flakey tesztek eliminálása, stabil tesztkörnyezetek.",
+            "Performance tesztelés és kapacitásvalidáció: load/stress/soak, baseline, regressziós teljesítmény-ellenőrzések (JMeter/Gatling).",
+            "Tech lead feladatok: mentorálás, code review, automatizálási standardok, guideline-ok, best practice-ek és tudásmegosztás."
+          ]
+        },
+        jobs: [
+          { period:"2023.04 - 2025.10", company:"Boyum IT", title:"Senior Test Automation Architect & Tech Lead" },
+          { period:"2022.07 - 2023.04", company:"Affinitext", title:"Senior Test Automation Engineer" },
+          { period:"2020.08 - 2022.07", company:"Deutsche Telekom IT Solutions", title:"Senior Test Automation Engineer" },
+          { period:"2017.11 - 2020.02", company:"ChemAxon", title:"Senior Test Automation Architect & Lecturer" },
+          { period:"2016.04 - 2017.10", company:"EPAM Systems", title:"Senior Test Automation Engineer" },
+          { period:"2013.07 - 2016.04", company:"Evosoft", title:"Test Automation Engineer" }
+        ],
+        education: [
+          {
+            title:"Villamosmérnök BSc",
+            org:"Óbuda University",
+            meta:"2013 – Műszerezés és Automatizálás (Automatizált gyártórendszerek)",
+            bullets:[]
+          },
+          {
+            title:"Műszaki Informatikai Érettségi",
+            org:"Trefort Ágoston Két Tanítási Nyelvű Műszaki Szakközépiskola",
+            meta:"2009",
+            bullets:[]
+          }
+        ],
+        languages: [
+          "Angol – Közép-felső (Tárgyalóképes, napi szintű szakmai kommunikáció)",
+          "Német – Alapfok (Műszaki dokumentáció olvasása, alapvető írásos kommunikáció)"
+        ],
+        other: [
+          "B kategóriás jogosítvány – Utazási hajlandóság adott",
+          "Remote/Hybrid munkavégzésre nyitott",
+          "Budapesti lakóhely"
+        ],
+        value: [
+          "Quality ownership: a minőség nem QA feladat, hanem rendszer-szintű felelősség — ezt kultúrává tudom tenni.",
+          "End-to-end gondolkodás: UI–API–DB–infra láncban látom a kockázatokat, és ehhez igazítom a tesztstratégiát.",
+          "Skálázható automatizálás: gyors, stabil és karbantartható tesztek (POM, megfelelő rétegzettség, flakiness kontroll).",
+          "CI/CD és Docker szemlélet: automatizált kapuk, reprodukálható futtatás konténerekben, gyors visszacsatolás a fejlesztésnek.",
+          "Mérhetőség: riportok, metrikák, trendek — vezetői és csapat-szintű döntéstámogatás a minőség javításához.",
+          "Vezetés és mentorálás: standardok, code review kultúra, juniorok felépítése és csapat-hatékonyság növelése."
+        ]
+      },
+
+      en: {
+        lang: "en",
+        ui: {
+          profileKicker: "Professional profile",
+          skillsKicker: "Technology stack",
+          projectsKicker: "Portfolio projects",
+          trainingsKicker: "Training (2025–2026)",
+          eduKicker: "Education",
+          langsKicker: "Languages",
+          otherKicker: "Additional info",
+          learnKicker: "Training & education",
+          expKicker: "Experience summary",
+          jobsKicker: "Employment history",
+          valueKicker: "Motivation & value",
+          projectsAllLabel: "All projects are public and available on:",
+          footnote: "Tip: “PDF / Print” opens your browser print dialog. Choose “Save as PDF”."
+        },
+        name: "Vince Nándorfi",
+        role: "Senior Test Automation Engineer (Test Automation Architect / Tech Lead)",
+        contact: {
+          email: "nandorfivince@protonmail.com",
+          phone: "+36 20 621 9693",
+          githubLabel: "github.com/nandorfivince",
+          githubUrl: "https://github.com/nandorfivince",
+          linkedinLabel: "linkedin.com/in/nandorfivince/",
+          linkedinUrl: "https://www.linkedin.com/in/nandorfivince/",
+          cvLabel: "nandorfivince.github.io/",
+          cvUrl: "https://nandorfivince.github.io/",
+          location: "Budapest, Hungary"
+        },
+        profile: [
+          "11 years of experience in QA and test automation, including Test Automation Architect and Tech Lead responsibilities. I build stable, scalable automation ecosystems across UI, API and database layers, tightly integrated into modern CI/CD pipelines, optimized for containerized and cloud-based execution.",
+          "I design test strategy and test architecture for complex systems (test pyramid, shift-left, risk-based testing) and establish quality gates throughout the release process. Strong focus on flaky test mitigation, test data & environment management, reporting/observability, and performance/reliability validation (load/stress/soak).",
+          "From a leadership perspective, I mentor engineers, enforce automation standards and code review culture, and drive ownership. My goal is fast yet controlled delivery: shorter feedback loops, fewer regressions, and measurable quality improvement."
+        ],
+        skillGroups: [
+          { title: "Programming languages (test automation)", items: ["Java","Python","JavaScript/TypeScript","Bash/Shell scripting"] },
+
+          { title: "UI / Frontend test automation", items: ["Playwright","Selenium WebDriver","Cypress","WebdriverIO","Page Object Model (POM)","Visual regression (e.g., Percy)"] },
+
+          { title: "API / Backend test automation", items: ["REST Assured","Postman","Service virtualization","Contract testing","SOAP/REST validation"] },
+
+          { title: "Java ecosystem – frameworks & libraries", items: ["JUnit 5","TestNG","Cucumber (BDD)","Maven/Gradle","AssertJ/Hamcrest","Mockito"] },
+
+          { title: "Python ecosystem – frameworks & libraries", items: ["Pytest","Requests","Playwright (Python)","Behave (BDD)","Allure reporting","virtualenv"] },
+
+          { title: "JavaScript/TS ecosystem – frameworks & packages", items: ["Playwright (JS/TS)","Cypress","Jest","Node.js","pnpm/npm/yarn","Allure/HTML reporting"] },
+
+          { title: "Test management & quality practices", items: ["Test Strategy & Test Plan","Test Pyramid / Shift-left","Risk-based testing","Regression & Smoke suite design","Test data management","Defect triage, RCA (root cause analysis)"] },
+
+          { title: "CI/CD, containers & environments", items: ["Jenkins","GitHub Actions / GitLab CI","Docker","Docker Compose","Kubernetes (basic ops)","Quality gates (Sonar, pipeline policies)"] },
+
+          { title: "Performance & reliability", items: ["JMeter","Gatling","Load/Stress/Soak testing","Performance baselines & trending","SLA/SLO mindset"] },
+
+          { title: "Databases & data validation", items: ["PostgreSQL","MySQL","SQLite","SQL-based assertions","Test fixtures & seeding","Data consistency checks"] },
+
+          { title: "Observability, reporting & tooling", items: ["Allure Report","ReportPortal","Log/trace-driven debugging","Test metrics (pass rate, flakiness, lead time)","Jira","Xray/Zephyr (if available in the environment)"] }
+        ],
+        projects: [
+          {
+            name: "Storyteller Demo",
+            subtitle: "Embeddable Story SDK",
+            url: "https://ministories-srjq.onrender.com/",
+            tech: ["Python FastAPI","SQLite","SQLModel","TypeScript","React","Vite","VanillaJS","Playwright","Docker","pnpm","RESTAPI","E2E","Testing"],
+            desc: "An embeddable Instagram Stories-style Web SDK demo project showcasing a TypeScript SDK, React playground, FastAPI backend, SQLite database, analytics event tracking, performance monitoring overlay, Playwright E2E tests, and Docker-based deployment in a monorepo structure."
+          },
+          {
+            name: "Modolit Demo",
+            subtitle: "Online Academy",
+            url: "https://modolit-demo.onrender.com/",
+            tech: ["Python","FastAPI","SQLite (PostgreSQL)","GCP (Render)","Docker","TypeScript","React","Next.js","WebSocket","WebRTC"],
+            desc: "An online educational platform where students can watch courses (with Hungarian Whisper subtitles), solve Python coding exercises (with automatic evaluation), and communicate with the teacher via real-time WebSocket chat."
+          },
+          {
+            name: "Creative Hobby",
+            subtitle: "Hobby community platform",
+            url: "https://nandorfivince.github.io/nandorfivince.creativehobby.github.io/",
+            tech: ["HTML","CSS","JS","Design experiment"],
+            desc: "Community platform for organizing hobby groups with event management and webshop."
+          },
+          {
+            name: "Ilident Patient Coordinator",
+            subtitle: "Single-phase dental implant patient coordination platform",
+            url: "https://nandorfivince.github.io/nandorfivince.ilident-design-A.github.io/",
+            variants: [
+              { label: "Design A (active)", url: "https://nandorfivince.github.io/nandorfivince.ilident-design-A.github.io/" },
+              { label: "Design B (alternative)", url: "https://nandorfivince.github.io/nandorfivince.ilident-design-B.github.io/" },
+              { label: "Original site", url: "https://ilident.com/" }
+            ],
+            tech: [
+              "HTML",
+              "CSS",
+              "JavaScript",
+              "Planned: Chatbot",
+              "Form handling",
+              "Notification system"
+            ],
+            desc: "Redesign and enhancement of an existing patient coordination website, exploring multiple design directions and preparing the platform for future automation features."
+          }
+        ],
+        trainings: [
+          {
+            title: "Python Fundamentals & Web Technologies",
+            org: "Cubix Academy",
+            meta: "14-week full-time (280+ hours) – Exam grade: Excellent",
+            bullets: ["Python OOP & language elements, data structures, algorithms","HTTP, REST APIs, databases","Git and clean code practices"]
+          },
+          {
+            title: "Web Development Fundamentals (JavaScript/TypeScript)",
+            org: "Cubix Academy",
+            meta: "14-week full-time (280+ hours) – Exam grade: Excellent",
+            bullets: ["Modern JavaScript (ES6+), TypeScript, async programming","DOM, HTTP client–server communication","CSS,SCSS,SASS","Developer tooling and debugging"]
+          },
+          {
+            title: "AI Developer",
+            org: "IT Betyár",
+            meta: "5-week specialization – Exam grade: Excellent",
+            bullets: ["ML fundamentals, ANN/CNN","TensorFlow/Keras, data preparation, training & evaluation","AI API integration"]
+          },
+          {
+            title: "Django & React.js Specialization",
+            org: "Udemy (self-study)",
+            meta: "",
+            bullets: ["Django MVT, ORM, DRF","React components, hooks, state management, React Router","Integrated full-stack applications"]
+          }
+        ],
+        exp: {
+          title: "11 years as Senior Test Automation / Architect / Tech Lead",
+          bullets: [
+            "Designed and implemented test automation architecture: coverage across UI, API, DB and integration layers with scalable frameworks.",
+            "Created test strategies and test plans: test pyramid, risk-based approach, release quality gates, and clear entry/exit criteria.",
+            "CI/CD integration: automated regression in pipelines, parallel execution, reliable reporting, trends and quality metrics.",
+            "Cross-functional collaboration: defect triage, RCA, eliminating flaky tests, stabilizing environments with Dev/Ops/Product.",
+            "Performance testing and capacity validation: load/stress/soak, baselines, performance regression checks (JMeter/Gatling).",
+            "Tech leadership: mentoring, code reviews, automation standards, guidelines, best practices and knowledge sharing."
+          ]
+        },
+        jobs: [
+          { period:"Apr 2023 - Oct 2025", company:"Boyum IT", title:"Senior Test Automation Architect & Tech Lead" },
+          { period:"Jul 2022 - Apr 2023", company:"Affinitext", title:"Senior Test Automation Engineer" },
+          { period:"Aug 2020 - Jul 2022", company:"Deutsche Telekom IT Solutions", title:"Senior Test Automation Engineer" },
+          { period:"Nov 2017 - Feb 2020", company:"ChemAxon", title:"Senior Test Automation Architect & Lecturer" },
+          { period:"Apr 2016 - Oct 2017", company:"EPAM Systems", title:"Senior Test Automation Engineer" },
+          { period:"Jul 2013 - Apr 2016", company:"Evosoft", title:"Test Automation Engineer" }
+        ],
+        education: [
+          { title:"BSc Electrical Engineering", org:"Óbuda University", meta:"2013 – Instrumentation & Automation", bullets:[] },
+          { title:"Technical IT High School Diploma", org:"Trefort Ágoston Bilingual Technical Secondary School", meta:"2009", bullets:[] }
+        ],
+        languages: [
+          "English – Upper-intermediate (daily professional communication)",
+          "German – Basic (reading technical documentation, basic written communication)"
+        ],
+        other: [
+          "Driving license (Category B) – open to travel",
+          "Open to Remote / Hybrid work",
+          "Based in Budapest"
+        ],
+        value: [
+          "Quality ownership: quality is a system responsibility, not a QA silo — I can turn it into culture.",
+          "End-to-end thinking: I map risks across UI–API–DB–infra and align strategy accordingly.",
+          "Scalable automation: fast, stable, maintainable suites (POM, layered design, flakiness control).",
+          "CI/CD and Docker mindset: automated gates, reproducible container execution, rapid feedback to engineering.",
+          "Measurability: reporting, metrics, trends — decision support for teams and leadership to improve quality.",
+          "Leadership & mentoring: standards, code review culture, upskilling juniors, improving team effectiveness."
+        ]
+      }
+    };
+
+    /* ---------------------------
+       Rendering
+       --------------------------- */
+    const $ = (id) => document.getElementById(id);
+
+    function initials(name){
+      const parts = (name||"").trim().split(/\s+/).filter(Boolean);
+      if(!parts.length) return "CV";
+      return (parts[0][0] + (parts[parts.length-1][0]||"")).toUpperCase();
+    }
+
+    function setText(id, value){ $(id).textContent = value; }
+    function setHTML(id, value){ $(id).innerHTML = value; }
+
+    function escapeHtml(str){
+      return String(str)
+        .replaceAll("&","&amp;")
+        .replaceAll("<","&lt;")
+        .replaceAll(">","&gt;")
+        .replaceAll('"',"&quot;")
+        .replaceAll("'","&#039;");
+    }
+
+    /* Emphasis for profile keywords (HU + EN) */
+    function emphasizeProfile(safeEscapedText, lang){
+      let out = safeEscapedText;
+
+      if(lang === "hu"){
+        out = out
+          .replaceAll("karrierváltás", "<strong>karrierváltás</strong>")
+          .replaceAll("5 hónap", "<strong>5 hónap</strong>");
+      }else{
+        out = out
+          .replaceAll("career change", "<strong>career change</strong>")
+          .replaceAll("5 months", "<strong>5 months</strong>");
+      }
+
+      return out;
+    }
+
+    function renderProfile(paras, lang){
+      return paras
+        .map(p => {
+          const safe = escapeHtml(p);
+          const emphasized = emphasizeProfile(safe, lang);
+          return `<p class="para">${emphasized}</p>`;
+        })
+        .join("");
+    }
+
+    function renderSkillGroups2col(groups){
+      // Split groups into 2 columns, like a horizontal CV section
+      const mid = Math.ceil(groups.length / 2);
+      const left = groups.slice(0, mid);
+      const right = groups.slice(mid);
+
+      const col = (arr) => `
+        <div class="panel">
+          ${arr.map(g => `
+            <div style="margin-bottom:12px;">
+              <div class="kicker" style="margin:0 0 8px 0;">${escapeHtml(g.title)}</div>
+              <div class="chips">
+                ${g.items.map(it => `<span class="chip">${escapeHtml(it)}</span>`).join("")}
+              </div>
+            </div>
+          `).join("")}
+        </div>
+      `;
+
+      return col(left) + col(right);
+    }
+
+    function renderProjects(projects){
+      return projects.map(p => `
+        <div class="project">
+          <div class="top">
+            <div>
+              ${p.url
+                ? `
+                  <a class="name-link"
+                    href="${escapeHtml(p.url)}"
+                    target="_blank"
+                    rel="noreferrer"
+                    style="color: var(--accent-2); text-decoration: none;">
+                    ${escapeHtml(p.name)}
+                  </a>
+                  ${p.variants ? `
+                    <div class="project-variants">
+                      ${p.variants.map(v => `
+                        <a href="${escapeHtml(v.url)}"
+                          target="_blank"
+                          rel="noreferrer">
+                          ${escapeHtml(v.label)}
+                        </a>
+                      `).join(" · ")}
+                    </div>
+                  ` : ""}
+                `
+                : `<span class="name">${escapeHtml(p.name)}</span>`
+              }
+              ${p.subtitle ? `<span class="subtitle">— ${escapeHtml(p.subtitle)}</span>` : ""}
+            </div>
+          </div>
+          <p class="desc">${escapeHtml(p.desc)}</p>
+          <div class="chips">
+            ${p.tech.map(t => `<span class="chip">${escapeHtml(t)}</span>`).join("")}
+          </div>
+        </div>
+      `).join("");
+    }
+
+    function renderTrainings(trainings){
+      return trainings.map(t => `
+        <div class="project" style="margin:10px 0;">
+          <div class="top">
+            <div>
+              <span class="name">${escapeHtml(t.title)}</span>
+              <span class="subtitle">— ${escapeHtml(t.org)}</span>
+            </div>
+          </div>
+          ${t.meta ? `<p class="desc muted" style="margin-bottom:8px;">${escapeHtml(t.meta)}</p>` : ""}
+          ${t.bullets && t.bullets.length ? `
+            <ul class="list">
+              ${t.bullets.map(b => `<li>${escapeHtml(b)}</li>`).join("")}
+            </ul>
+          ` : ""}
+        </div>
+      `).join("");
+    }
+
+    function renderEducation(education){
+      return education.map(e => `
+        <div class="project" style="margin:10px 0;">
+          <div class="top">
+            <div>
+              <span class="name">${escapeHtml(e.title)}</span>
+              <span class="subtitle">— ${escapeHtml(e.org)}</span>
+            </div>
+          </div>
+          ${e.meta ? `<p class="desc muted" style="margin-bottom:8px;">${escapeHtml(e.meta)}</p>` : ""}
+          ${e.bullets && e.bullets.length ? `
+            <ul class="list">
+              ${e.bullets.map(b => `<li>${escapeHtml(b)}</li>`).join("")}
+            </ul>
+          ` : ""}
+        </div>
+      `).join("");
+    }
+
+    function renderJobs(jobs){
+      return jobs.map(j => `
+        <div class="row">
+          <div class="period">${escapeHtml(j.period)}</div>
+          <div class="company">${escapeHtml(j.company)}</div>
+          <div class="title">${escapeHtml(j.title)}</div>
+        </div>
+      `).join("");
+    }
+
+    function renderList(items){
+      return items.map(x => `<li>${escapeHtml(x)}</li>`).join("");
+    }
+
+    function applyLang(lang){
+      const d = CV[lang] || CV.hu;
+
+      document.documentElement.lang = d.lang;
+
+      // header bar
+      setText("hdrName", d.name);
+      setText("hdrRole", d.role);
+
+      // hero
+      setText("name", d.name);
+      setText("role", d.role);
+      setText("avatarFallback", initials(d.name));
+
+      // section titles
+      setText("profileKicker", d.ui.profileKicker);
+      setText("skillsKicker", d.ui.skillsKicker);
+      setText("projectsKicker", d.ui.projectsKicker);
+      setText("trainingsKicker", d.ui.trainingsKicker);
+      setText("eduKicker", d.ui.eduKicker);
+      setText("langsKicker", d.ui.langsKicker);
+      setText("otherKicker", d.ui.otherKicker);
+      setText("learnKicker", d.ui.learnKicker);
+      setText("expKicker", d.ui.expKicker);
+      setText("jobsKicker", d.ui.jobsKicker);
+      setText("valueKicker", d.ui.valueKicker);
+      setText("projectsAllLabel", d.ui.projectsAllLabel);
+      setText("footnote", d.ui.footnote);
+
+      // contact (right side)
+      const contactHTML = `
+        <div><span class="muted">Email:</span> <a href="mailto:${escapeHtml(d.contact.email)}">${escapeHtml(d.contact.email)}</a></div>
+        <div><span class="muted">Phone:</span> <a href="tel:${escapeHtml(d.contact.phone)}">${escapeHtml(d.contact.phone)}</a></div>
+        <div><span class="muted">Location:</span> ${escapeHtml(d.contact.location)}</div>
+        <div><span class="muted">GitHub:</span> <a href="${escapeHtml(d.contact.githubUrl)}" target="_blank" rel="noreferrer">${escapeHtml(d.contact.githubLabel)}</a></div>
+        <div><span class="muted">LinkedIn:</span> <a href="${escapeHtml(d.contact.linkedinUrl)}" target="_blank" rel="noreferrer">${escapeHtml(d.contact.linkedinLabel)}</a></div>
+        <div><span class="muted">CV:</span> <a href="${escapeHtml(d.contact.cvUrl)}" target="_blank" rel="noreferrer">${escapeHtml(d.contact.cvLabel)}</a></div>
+      `;
+      setHTML("contact", contactHTML);
+
+      // content
+      setHTML("profile", renderProfile(d.profile, d.lang));
+      setHTML("skillsGrid", renderSkillGroups2col(d.skillGroups));
+      setHTML("projects", renderProjects(d.projects));
+      setHTML("trainings", renderTrainings(d.trainings));
+      setHTML("education", renderEducation(d.education));
+      setHTML("langs", renderList(d.languages));
+      setHTML("other", renderList(d.other));
+      setText("expTitle", d.exp.title);
+      setHTML("expBullets", renderList(d.exp.bullets));
+      setHTML("jobs", renderJobs(d.jobs));
+      setHTML("value", renderList(d.value));
+
+      // projects link
+      const gl = $("githubLink2");
+      gl.href = d.contact.githubUrl;
+      gl.textContent = d.contact.githubLabel;
+
+      // buttons active state
+      const huBtn = $("btnHU"), enBtn = $("btnEN");
+      if(lang === "hu"){
+        huBtn.classList.add("active"); enBtn.classList.remove("active");
+        huBtn.setAttribute("aria-selected","true"); enBtn.setAttribute("aria-selected","false");
+      }else{
+        enBtn.classList.add("active"); huBtn.classList.remove("active");
+        enBtn.setAttribute("aria-selected","true"); huBtn.setAttribute("aria-selected","false");
+      }
+
+      localStorage.setItem("cv_lang", lang);
+    }
+
+    /* ---------------------------
+       Events + Init
+       --------------------------- */
+    $("btnHU").addEventListener("click", () => applyLang("hu"));
+    $("btnEN").addEventListener("click", () => applyLang("en"));
+    $("btnPrint").addEventListener("click", () => window.print());
+
+    (function init(){
+      const savedLang = localStorage.getItem("cv_lang");
+      applyLang(savedLang === "en" ? "en" : "hu");
+
+      window.addEventListener("beforeprint", () => {
+        const lang = localStorage.getItem("cv_lang") || "hu";
+        const d = CV[lang] || CV.hu;
+        document.title = `${d.name} - CV (${lang.toUpperCase()})`;
+      });
+    })();
+  </script>
+</body>
+</html>
+
